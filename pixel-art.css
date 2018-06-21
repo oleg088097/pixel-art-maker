@@ -1,0 +1,143 @@
+div.filled {
+    width:  calc(1vw);
+    height:  calc(1vw);
+    border: 0;
+    display: inline-block;
+}
+div.block {
+    background: white;
+    width: calc(1vw - 2px);
+    height: calc(1vw - 2px);
+    border: 1px solid lightgray;
+    display: inline-block;
+    margin: 0;
+}
+
+p.divBricksRow {
+    margin: 0;
+    line-height: 0;
+}
+p.paletteRow {
+    margin: calc(20vw / 23.5) 0 0;
+    line-height: 0;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+.right {
+    margin-right: 0;
+    text-align: right;
+    display: inline-block;
+}
+.left {
+    margin-left: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.noMargin{
+    margin: 0;
+}
+
+#pixelArt{
+    margin: auto auto auto calc(1vw);
+    border-radius: calc(75vw / 60);
+    background: #344a4e;
+    padding: calc(0.75vw);
+    width: calc(75vw);
+    display: inline-block;
+    vertical-align: top;
+}
+#palette{
+    margin-left: calc(1vw);
+    border-radius: calc(20vw / 15);
+    background: #344a4e;
+    padding: calc(0.25vw);
+    width: calc(20vw);
+    vertical-align: top;
+}
+body {
+    background: #233234;
+    font-size: 0; /* Removes gap between palette and pixelArt*/
+}
+
+.dot {
+    margin: 0 calc(20vw / 235)  calc(20vw / 235);
+    width:  calc(2vw);
+    height:  calc(2vw);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+#currentColorIndicator{
+    margin: 0;
+    vertical-align: bottom;
+}
+
+label{
+    font-family: "Lucida Console";
+    color: #1c1b18;
+    font-size: calc(20vw * 2 / 23.5);
+    margin-bottom: calc(20vw / 94);
+}
+
+input[type="color"] {
+    opacity: 0;
+    display: block;
+    width: calc(2vw);
+    height: calc(2vw);
+    border: none;
+}
+#color-picker-wrapper {
+    display: inline-block;
+}
+
+button {
+    -moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+    -webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #80b7c1), color-stop(1, #344a4e));
+    background:-moz-linear-gradient(top, #80b7c1 5%, #344a4e 100%);
+    background:-webkit-linear-gradient(top, #80b7c1 5%, #344a4e 100%);
+    background:-o-linear-gradient(top, #80b7c1 5%, #344a4e 100%);
+    background:-ms-linear-gradient(top, #80b7c1 5%, #344a4e 100%);
+    background:linear-gradient(to bottom, #80b7c1 5%, #344a4e 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b7c1', endColorstr='#344a4e',GradientType=0);
+    background-color:#80b7c1;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:calc(20vw / 25);
+    border:2px solid #333029;
+    display:inline-block;
+    cursor:pointer;
+    color: #1c1b18;
+    font-family: "Lucida Console";
+    font-size:calc(20vw / 23.5);
+    font-weight:bold;
+    padding:calc(20vw / 45) calc(20vw / 23.5);
+    text-decoration:none;
+    margin: calc(20vw / 23.5) auto auto auto;
+}
+button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #344a4e), color-stop(1, #80b7c1));
+    background:-moz-linear-gradient(top, #344a4e 5%, #80b7c1 100%);
+    background:-webkit-linear-gradient(top, #344a4e 5%, #80b7c1 100%);
+    background:-o-linear-gradient(top, #344a4e 5%, #80b7c1 100%);
+    background:-ms-linear-gradient(top, #344a4e 5%, #80b7c1 100%);
+    background:linear-gradient(to bottom, #344a4e 5%, #80b7c1 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#344a4e', endColorstr='#80b7c1',GradientType=0);
+    background-color:#344a4e;
+}
+button:active {
+    position:relative;
+    top:1px;
+}
+
+a{
+    vertical-align: bottom;
+    margin: calc(20vw / 23.5) auto auto auto;
+    float:right;
+    clear:right;
+}
