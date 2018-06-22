@@ -22,67 +22,15 @@ document.getElementById('colorPicker').addEventListener('change', function (ev){
 
 document.getElementById('save').addEventListener('click', function () {
     const canvas = document.getElementById('canvas');
-    const canvasObject = {
-        'class': canvas.getAttribute('class'),
-        id: canvas.id,
-        divsCols: canvas.getAttribute('divsCols'),
-        divsRows: canvas.getAttribute('divsRows'),
-        rows: []
-    };
-
-    let row = canvas.firstChild;
-    for (let i = 0; i < canvas.getAttribute('divsRows'); i++){
-        const rowObject = {
-            'class': 'divBricksRow',
-            divs: []
-        };
-        let div = row.firstChild;
-        for (let j = 0; j < canvas.getAttribute('divsCols'); j++){
-            const blockObject = {
-                'class': div.getAttribute('class'),
-                id: div.getAttribute('id'),
-                'style': 'background: ' + div.style.background
-            };
-            rowObject.divs.push(blockObject);
-            div = div.nextSibling;
-        }
-        canvasObject.rows.push(rowObject);
-        row = row.nextSibling;
-    }
-
-    console.log(JSON.stringify(canvasObject));
+    const canvasObject = nodeToJSObject(canvas);
     localStorage.setItem('savedCanvas', JSON.stringify(canvasObject));
 });
 
 document.getElementById('load').addEventListener('click', function () {
     const canvasObject = JSON.parse(localStorage.getItem('savedCanvas'));
-    const canvas = document.createElement('div');
-    for (let canvasObjectKey in canvasObject) {
-        if (!Array.isArray(canvasObject[canvasObjectKey])) {
-            canvas.setAttribute(canvasObjectKey, canvasObject[canvasObjectKey]);
-        } else {
-            for (let canvasObjectElement of canvasObject[canvasObjectKey]) {
-                const row = document.createElement('p');
-                for (let rowKey in canvasObjectElement) {
-                    if (!Array.isArray(canvasObjectElement[rowKey])) {
-                        row.setAttribute(rowKey, canvasObjectElement[rowKey]);
-                    } else {
-                        for (let rowElement of canvasObjectElement[rowKey]) {
-                            const div = document.createElement('div');
-                            for (let rowElementKey in rowElement) {
-                                div.setAttribute(rowElementKey, rowElement[rowElementKey]);
-                            }
-                            row.appendChild(div);
-                        }
-                    }
-                }
-                canvas.appendChild(row);
-            }
-        }
-    }
+    const canvas = JSObjectToNode(canvasObject);
     document.getElementById('pixelArt').replaceChild(canvas, document.getElementById('canvas'));
     setCanvasListeners(canvas);
-
 });
 
 document.getElementById('fill').addEventListener('click', function () {
@@ -135,7 +83,7 @@ function setupCanvas(cols, rows, canvas){
         for (let j = 0; j < cols; j++){
             const block = document.createElement('div');
             block.setAttribute('class', 'block');
-            block.setAttribute('id', 'row_' + i + ' col_' + j);
+            block.setAttribute('id', 'row_' + i + '_col_' + j);
             row.appendChild(block);
         }
         canvas.appendChild(row);
